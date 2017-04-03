@@ -1,5 +1,6 @@
 package com.anwesome.ui.progressivecheckform;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 
 import java.util.*;
@@ -10,13 +11,15 @@ public class CheckBoxUiGroup {
     private CheckBoxUi curr;
     private String title = null;
     private List<CheckBoxUi> checkBoxUis = new ArrayList<>();
+    private String question;
     private float x,y,w;
     public CheckBoxUiGroup(float x,float y,float w) {
         this.x = x;
         this.y = y;
         this.w = w;
     }
-    public void createCheckBoxes(List<String> titles) {
+    public void createCheckBoxes(List<String> titles,String question) {
+        this.question = question;
         float newY = y,gap = w/3,size = w/4;
         if(titles.size() == 3) {
             for (String title : titles) {
@@ -28,6 +31,11 @@ public class CheckBoxUiGroup {
     public void draw(Canvas canvas, Paint paint) {
         for(CheckBoxUi checkBoxUi:checkBoxUis) {
             checkBoxUi.draw(canvas,paint);
+        }
+        if(question.split(" ").length <= 10) {
+            paint.setTextSize(w/15);
+            paint.setColor(Color.parseColor("#263238"));
+            canvas.drawText(question,x+w/10,y-w/5,paint);
         }
     }
     public String getTitle() {

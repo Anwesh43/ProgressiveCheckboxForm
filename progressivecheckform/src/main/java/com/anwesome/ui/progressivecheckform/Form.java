@@ -20,12 +20,12 @@ public class Form {
         this.x = x;
         this.y = y;
     }
-    public void setCheckBoxOptions(List<String> titles) {
-        checkBoxUiGroup = new CheckBoxUiGroup(w/10,h/4,2*w/3);
-        checkBoxUiGroup.createCheckBoxes(titles);
+    public void setCheckBoxOptions(List<String> titles,String question) {
+        checkBoxUiGroup = new CheckBoxUiGroup(w/10,h/3,2*Math.min(w,h)/3);
+        checkBoxUiGroup.createCheckBoxes(titles,question);
     }
     public void setSubmitButton(String title) {
-        submitButton = new SubmitButton(title,w/2-w/10,0.7f*h,w/3,w/12);
+        submitButton = new SubmitButton(title,w/2-w/10,0.85f*h,w/3,w/12);
     }
     public void draw(Canvas canvas, Paint paint) {
         canvas.save();

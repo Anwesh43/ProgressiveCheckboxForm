@@ -18,6 +18,7 @@ public class FormTracker {
     }
     public void draw(Canvas canvas, Paint paint) {
         paint.setStrokeWidth(wFinal/50);
+        paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setColor(Color.parseColor("#CFD8DC"));
         canvas.drawLine(x,y,x+wFinal,y,paint);
         paint.setColor(Color.parseColor("#00E676"));

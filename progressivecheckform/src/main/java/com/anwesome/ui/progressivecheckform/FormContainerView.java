@@ -16,9 +16,9 @@ public class FormContainerView extends View {
     private int time = 0;
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private boolean isAnimated = false;
-    public FormContainerView(Context context, List<List<String>> options) {
+    public FormContainerView(Context context, List<List<String>> options,List<String> questions) {
         super(context);
-        formContainer = new FormContainer(options);
+        formContainer = new FormContainer(options,questions);
     }
     public void onDraw(Canvas canvas) {
         if(time == 0) {

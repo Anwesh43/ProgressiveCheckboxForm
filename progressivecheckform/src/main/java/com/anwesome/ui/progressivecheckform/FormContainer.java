@@ -16,18 +16,20 @@ public class FormContainer {
     private FormScreenManager formScreenManager;
     private ConcurrentLinkedQueue<Form> forms = new ConcurrentLinkedQueue<>();
     private List<List<String>> options = new ArrayList<>();
-    public FormContainer(List<List<String>> options) {
+    private List<String> questions = new ArrayList<>();
+    public FormContainer(List<List<String>> options,List<String> questions) {
         this.options = options;
+        this.questions = questions;
     }
     public void init(float x,float y,int w,int h) {
         if(options.size()>0) {
             int index = 0;
             float xi = x;
-            formTracker = new FormTracker(w / 6, h / 8, 2 * w / 3, options.size());
+            formTracker = new FormTracker(w / 6, h / 9, 2 * w / 3, options.size());
             formScreenManager = new FormScreenManager( x, y,w);
             for (List<String> option : options) {
                 Form form = new Form(xi, 0, w, h);
-                form.setCheckBoxOptions(option);
+                form.setCheckBoxOptions(option,questions.get(index));
                 if (index == options.size() - 1) {
                     form.setSubmitButton("Complete");
                 } else {
